@@ -1,0 +1,5 @@
+{aset;bad;{if;==;{aget;{userid}weapon};0;false;true}}
+{if;==;{aget;bad};true;Your weapon has been unequipped;You do not have a weapon equipped.}
+{aset;{userid}weapon;{if;==;{aget;bad};true;0;0}}
+{aset;{userid}Atk;{if;==;{aget;bad};false;{aget;{userid}Atk};{math;-;{aget;{userid}Atk};{switch;{aget;{userid}weapon};IronSword;6;SteelSword;9;IronAxe;8;SteelAxe;11;IronAxe;7;SteelAxe;10;0}}}}
+{aset;{userid}colour;{if;==;{aget;bad};false;{aget;{userid}colour};0}}
