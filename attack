@@ -1,0 +1,33 @@
+{aset;E;{args}}
+{aset;pn;{username}}{aset;en;{usernick;{aget;E}}}
+{aset;D;{math;-;{aget;{userid}Atk};{aget;{userid;{args}}Def}}}
+{aset;ED;{math;-;{aget;{userid;{args}}Atk};{aget;{userid}Def}}}
+{aset;D;{if;<;{aget;D};0;0;{aget;D}}}
+{aset;ED;{if;<;{aget;ED};0;0;{aget;ED}}}
+{aset;RNG1;{randint;1;100}}
+{aset;pCrit;{if;<=;{aget;RNG1};{math;-;{aget;{userid}Skl};{aget;{userid;{args}}Luk}};1;0}}
+{aset;RNG2;{randint;1;100}}
+{aset;eCrit;{if;<=;{aget;RNG2};{math;-;{aget;{userid;{args}}Skl};{aget;{userid}Luk}};1;0}}
+{aset;cD;{if;==;{aget;pCrit};1;{math;*;3;{aget;D}};{aget;D}}}
+{aset;cED;{if;==;{aget;eCrit};1;{math;*;3;{aget;ED}};{aget;ED}}}
+
+{aget;pAttackText}
+{aget;eAttackText}
+{aset;tD;{aget;cD}}{aset;tED;{aget;cED}}
+
+{aset;pDb;{if;>=;{math;-;{aget;{userid}Spd};{aget;{userid;{args}}Spd}};4;1;0}}
+{if;==;{aget;pDb};1;
+**{username}** attacked **{usernick;{aget;E}}**!
+Dealt **{aget;D}** damage.;}
+{aset;eDb;{if;>=;{math;-;{aget;{userid;{args}}Spd};{aget;{userid}Spd}};4;1;0}}
+{if;==;{aget;eDb};1;
+**{usernick;{aget;E}}** attacked **{username}**!
+Dealt **{aget;ED}** damage.;}
+
+{aset;tD;{if;==;{aget;pDb};1;{math;+;{aget;tD};{aget;D}};{aget;tD}}}
+{aset;tED;{if;==;{aget;eDb};1;{math;+;{aget;tED};{aget;ED}};{aget;tED}}}
+{aset;{userid}HP;{math;-;{aget;{userid}HP};{aget;tED}}}
+{aset;{userid;{args}}HP;{math;-;{aget;{userid;{args}}HP};{aget;tD}}}
+
+{username} has {aget;{userid}HP}/{aget;{userid}MaxHP} HP!
+{usernick;{aget;E}} has {aget;{userid;{args}}HP}/{aget;{userid;{args}}MaxHP} HP!
