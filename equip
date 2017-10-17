@@ -1,0 +1,5 @@
+{if;==;{argslen};0;You did not specify a weapon to equip. Use `t!t equip <weapon>` to equip a weapon.;{aset;bad;{if;==;{aget;{userid}weapon};0;false;true}}
+{if;==;{aget;bad};true;You already have a weapon equipped.;Your weapon has been equipped.}
+{aset;{userid}weapon;{if;==;{aget;bad};true;{aget;{userid}weapon};{args}}}
+{aset;{userid}Atk;{if;==;{aget;bad};true;{aget;{userid}Atk};{math;+;{aget;{userid}Atk};{switch;{aget;{userid}weapon};IronSword;6;SteelSword;9;IronAxe;8;SteelAxe;11;IronLance;7;SteelLance;10;0}}}}}
+{aset;{userid}colour;{if;==;{aget;bad};true;{aget;{userid}colour};{switch;{aget;{userid}weapon};IronSword;Red;SteelSword;Red;IronAxe;Green;SteelAxe;Green;IronLance;Blue;SteelLance;10;0}}}
