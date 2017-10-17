@@ -1,0 +1,4 @@
+{aset;pAttackText;{aget;pn} attacked {aget;en}!{if;==;{aget;pCrit};1; Critical Hit!}
+Dealt {aget;cD} damage.}
+{aset;eAttackText;{aget;en} attacked {aget;pn}!{if;==;{aget;eCrit};1; Critical Hit!}
+Dealt {aget;cED} damage.}
